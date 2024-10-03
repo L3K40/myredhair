@@ -10,7 +10,7 @@
             padding: 0;
             overflow: hidden;
             height: 100%;
-            background-color: black; /* Fundo preto */
+            background-color: black;
         }
         body {
             font-family: 'Arial', sans-serif;
@@ -40,8 +40,8 @@
         h1 {
             font-size: 3rem;
             margin-bottom: 20px;
-            color: black; /* Texto preto */
-            text-shadow: 2px 2px 10px gold, -2px -2px 10px gold; /* Contorno dourado */
+            color: black;
+            text-shadow: 2px 2px 10px gold, -2px -2px 10px gold;
         }
         .btn {
             padding: 15px 30px;
@@ -54,7 +54,7 @@
             text-transform: uppercase;
             text-decoration: none;
             margin-top: 20px;
-            display: none; /* Botão inicialmente oculto */
+            display: none;
             z-index: 2;
             position: absolute;
             left: 50%;
@@ -65,7 +65,7 @@
             background-color: #ff6699;
         }
         .story-text {
-            display: none; /* Inicialmente oculto */
+            display: none;
             position: absolute;
             top: 10%;
             left: 50%;
@@ -76,12 +76,35 @@
             line-height: 1.5;
             padding: 20px;
             z-index: 1;
-            background-color: rgba(0, 0, 0, 0.7); /* Fundo transparente para o texto */
-            width: 80%; /* Para garantir melhor visualização */
-            height: 80%; /* Ajuste para caber no layout */
-            overflow-y: scroll; /* Permitir rolagem se o texto for muito longo */
-            transition: opacity 1s ease-in-out; /* Transição suave ao esconder */
-            opacity: 1; /* Opacidade inicialmente 1 */
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 80%;
+            height: 80%;
+            overflow-y: scroll;
+            transition: opacity 1s ease-in-out;
+            opacity: 1;
+        }
+        /* Estilo para a página 3 */
+        .page3 {
+            background-image: url('https://i.imgur.com/wzN0oyp.png');
+            background-size: cover;
+            background-position: center;
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+        .page3-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            text-align: center;
         }
     </style>
 </head>
@@ -109,7 +132,7 @@
                 allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <!-- Novo Texto da História -->
+        <!-- Texto da História da Página 2 -->
         <div class="story-text" id="storyText">
             <h2>Um pouco sobre nosso show...</h2>
 
@@ -124,6 +147,27 @@
             <p>Eu me orgulho de cada passo que a gente deu até agora. O jeito que a gente se apoia, se provoca, e se cuida é algo que eu nunca encontrei antes. E quando penso em tudo isso, só consigo sorrir, porque sei que a gente tem algo raro, algo verdadeiro.</p>
 
             <p>Desde aquele dia, minha vida mudou de uma forma que eu nunca imaginei. O que a gente tem é único, e eu sou grato por cada momento que passamos juntos. E tenho certeza de que ainda vamos construir muito mais. Tô aqui, firme, do seu lado, pronto pra viver tudo o que a vida tem reservado pra nós.</p>
+        </div>
+
+        <!-- Botão CONTINUE para ir para a Página 3 -->
+        <a href="#" class="btn" id="continueButtonPage3" style="display: none;" onclick="goToPage3()">CONTINUE</a>
+    </div>
+
+    <!-- Página 3: Pedido de Namoro -->
+    <div id="pagina3" class="page3">
+        <div class="page3-text">
+            <h2>Amor,</h2>
+            <p>Eu tava aqui pensando em tudo que a gente já viveu até agora, e como cada detalhe da nossa história faz sentido. Desde aquela primeira mensagem despretensiosa até as conversas de madrugada, onde a gente foi se conectando sem nem perceber, parece que o universo deu um jeito de juntar a gente de um jeito perfeito, mesmo no meio do caos.</p>
+
+            <p>A gente já passou por tanto, né? Tantas conversas, risadas, provocações e momentos intensos que só nós dois sabemos o peso que eles têm. E, ao mesmo tempo, tudo flui de um jeito tão natural que é impossível não sorrir quando penso em nós dois. Você chegou na minha vida quando eu menos esperava e, desde então, nada mais foi igual.</p>
+
+            <p>Eu vejo o quanto você se entrega, o quanto você é forte, e o quanto você se dedica. E isso me faz te admirar cada vez mais. Você é aquele tipo de pessoa que inspira, que faz a vida ter mais cor, mais significado. E eu sou grato por cada segundo ao seu lado, porque você me trouxe algo que eu nem sabia que faltava: leveza, paz, e ao mesmo tempo, uma paixão que faz o coração bater mais forte.</p>
+
+            <p>E agora, olhando pra nossa história, pra tudo o que a gente já construiu, eu só consigo pensar em uma coisa: eu não quero que isso acabe. Não quero que esse "nós" seja só um capítulo, eu quero que a gente escreva o livro todo junto, que a gente continue construindo essa conexão, crescendo juntos, superando cada obstáculo e celebrando cada vitória. Porque, de verdade, eu nunca me senti tão completo quanto me sinto com você.</p>
+
+            <p>Então, é por isso que hoje eu tô aqui, com o coração acelerado e com uma certeza: eu quero que você seja minha, de um jeito que vai além das palavras. Eu quero ser o cara que tá do seu lado em cada momento, seja nos dias fáceis ou nos dias difíceis, rindo das nossas besteiras ou enfrentando os desafios que a vida traz.</p>
+
+            <p>Amor, a verdade é que eu já sou seu, desde o momento que a gente começou a se conhecer. E agora eu te pergunto, de coração aberto e com a certeza de que é com você que eu quero estar: aceita namorar comigo e continuar escrevendo a história desse show incrível?</p>
         </div>
     </div>
 
@@ -166,7 +210,18 @@
                         storyText.style.display = 'none';
                     }, 1000); // Tempo para transição de desaparecimento suave
                 }
+
+                // Exibir o botão CONTINUE para a página 3 aos 6:40
+                if (data.seconds >= 400) { // 6 minutos e 40 segundos (400 segundos)
+                    document.getElementById('continueButtonPage3').style.display = 'block';
+                }
             });
+        }
+
+        // Função para ir para a página 3 (pedido de namoro)
+        function goToPage3() {
+            document.getElementById('pagina2').style.display = 'none'; // Esconder a página 2
+            document.getElementById('pagina3').style.display = 'block'; // Mostrar a página 3
         }
     </script>
 
