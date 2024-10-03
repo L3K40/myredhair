@@ -206,7 +206,7 @@
         </div>
 
         <!-- Botão CONTINUE para a última página -->
-        <a href="#" class="btn" id="continueButtonFinalPage" style="display: none;" onclick="goToFinalPage()">CONTINUE</a>
+        <a href="#" class="btn" id="continueButtonFinalPage" onclick="goToFinalPage()">CONTINUE</a>
     </div>
 
     <!-- Última Página: Vídeo final e pedido de namoro -->
@@ -280,6 +280,9 @@
         function goToPage3() {
             document.getElementById('pagina2').style.display = 'none'; // Esconder a página 2
             document.getElementById('pagina3').style.display = 'block'; // Mostrar a página 3
+
+            // Mostrar o botão CONTINUE imediatamente ao entrar na página 3
+            document.getElementById('continueButtonFinalPage').style.display = 'block';
         }
 
         // Função para ir para a última página (vídeo final)
