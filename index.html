@@ -15,25 +15,27 @@
         body {
             font-family: 'Arial', sans-serif;
         }
-        .video-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100vh;
+            z-index: 0; /* Certifica-se de que o vídeo fica no fundo */
         }
         iframe {
-            width: 80%;  /* Ajusta a largura do vídeo */
-            height: 60%; /* Ajusta a altura do vídeo */
+            width: 100%;
+            height: 100%;
             border: none;
         }
         .hero-content {
             position: absolute;
-            top: 80%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
             text-align: center;
-            z-index: 1;
+            z-index: 1; /* Certifica-se de que o texto fica acima do vídeo */
         }
         h1 {
             font-size: 3rem;
@@ -60,8 +62,8 @@
 </head>
 <body>
 
-    <!-- Página 1: Home com Vídeo do Vimeo -->
-    <div class="video-container">
+    <!-- Página 1: Home com Vídeo do Vimeo em Tamanho Original -->
+    <div class="video-bg">
         <iframe src="https://player.vimeo.com/video/1015482453?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0" 
             allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
