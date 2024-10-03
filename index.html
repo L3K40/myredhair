@@ -303,7 +303,7 @@
 
             // Exibir a caixa "Quer namorar comigo?" aos 2:37 do vídeo
             playerFinal.on('timeupdate', function(data) {
-                if (data.seconds >= 157) { // 2 minutos e 37 segundos (157 segundos)
+                if (data.seconds >= 157 && !document.getElementById('questionBox').classList.contains('hidden')) { // 2 minutos e 37 segundos (157 segundos)
                     document.getElementById('questionBox').style.display = 'block';
                 }
             });
@@ -311,6 +311,7 @@
 
         // Função para mostrar a resposta após a escolha
         function showResponse() {
+            document.getElementById('questionBox').classList.add('hidden'); // Marcar como escondido
             document.getElementById('questionBox').style.display = 'none'; // Esconder o quadro com as opções imediatamente
             document.getElementById('responseBox').style.display = 'block'; // Mostrar a resposta
 
