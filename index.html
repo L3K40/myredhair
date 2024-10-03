@@ -76,7 +76,7 @@
             line-height: 1.5;
             padding: 20px;
             z-index: 1;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.8); /* Escurecido mais para melhorar a legibilidade */
             width: 80%;
             height: 80%;
             overflow-y: scroll;
@@ -100,11 +100,47 @@
             transform: translate(-50%, -50%);
             color: white;
             font-size: 1.5rem;
-            background-color: rgba(0, 0, 0, 0.65); /* Escurecido em 5% */
+            background-color: rgba(0, 0, 0, 0.8); /* Escurecido mais */
             padding: 20px;
             border-radius: 10px;
             width: 80%;
             text-align: justify; /* Justificado à esquerda */
+        }
+        .question-box {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .question-box button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #ff3366;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .response-box {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -169,6 +205,29 @@
 
             <p>Amor, a verdade é que eu já sou seu, desde o momento que a gente começou a se conhecer. E agora eu te pergunto, de coração aberto e com a certeza de que é com você que eu quero estar: aceita namorar comigo e continuar escrevendo a história desse show incrível?</p>
         </div>
+
+        <!-- Botão CONTINUE para a última página -->
+        <a href="#" class="btn" id="continueButtonFinalPage" style="display: none;" onclick="goToFinalPage()">CONTINUE</a>
+    </div>
+
+    <!-- Última Página: Vídeo final e pedido de namoro -->
+    <div id="finalPage" class="section" style="display: none;">
+        <div class="video-bg">
+            <iframe id="finalVideo" src="https://player.vimeo.com/video/1015518480?autoplay=1&loop=0&title=0&byline=0&portrait=0" 
+                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <!-- Caixa com a pergunta "Quer namorar comigo?" -->
+        <div class="question-box" id="questionBox">
+            <p>QUER NAMORAR COMIGO?</p>
+            <button onclick="showResponse()">SIM</button>
+            <button onclick="showResponse()">COM CERTEZA</button>
+        </div>
+
+        <!-- Caixa de resposta após escolher uma opção -->
+        <div class="response-box" id="responseBox">
+            <p>Então me liga pra me contar sua resposta e seguir curtindo nosso show juntos! Eu te amo!</p>
+        </div>
     </div>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
@@ -222,6 +281,38 @@
         function goToPage3() {
             document.getElementById('pagina2').style.display = 'none'; // Esconder a página 2
             document.getElementById('pagina3').style.display = 'block'; // Mostrar a página 3
+        }
+
+        // Função para ir para a última página (vídeo final)
+        function goToFinalPage() {
+            document.getElementById('pagina3').style.display = 'none'; // Esconder a página 3
+            document.getElementById('finalPage').style.display = 'block'; // Mostrar a última página
+
+            // Reproduzir o vídeo final
+            var finalVideo = document.getElementById('finalVideo');
+            var playerFinal = new Vimeo.Player(finalVideo);
+            playerFinal.play();
+
+            // Exibir a caixa "Quer namorar comigo?" aos 2:37 do vídeo
+            playerFinal.on('timeupdate', function(data) {
+                if (data.seconds >= 157) { // 2 minutos e 37 segundos (157 segundos)
+                    document.getElementById('questionBox').style.display = 'block';
+                }
+            });
+        }
+
+        // Função para mostrar a resposta após a escolha
+        function showResponse() {
+            document.getElementById('questionBox').style.display = 'none';
+            document.getElementById('responseBox').style.display = 'block';
+
+            // Esconder a resposta após 20 segundos
+            setTimeout(function() {
+                document.getElementById('responseBox').style.opacity = 0; // Gradualmente esconder o texto
+                setTimeout(function() {
+                    document.getElementById('responseBox').style.display = 'none';
+                }, 1000); // Tempo para transição de desaparecimento suave
+            }, 20000);
         }
     </script>
 
