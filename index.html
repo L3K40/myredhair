@@ -58,7 +58,6 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            bottom: 20%;
         }
         .btn:hover {
             background-color: #ff6699;
@@ -104,6 +103,13 @@
             border-radius: 10px;
             width: 80%;
             text-align: justify;
+        }
+        .continue-btn {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
         }
         .question-box {
             display: none;
@@ -185,7 +191,7 @@
         </div>
 
         <!-- Botão CONTINUE para ir para a Página 3 -->
-        <a href="#" class="btn" id="continueButtonPage3" style="display: none;" onclick="goToPage3()">CONTINUE</a>
+        <a href="#" class="btn continue-btn" id="continueButtonPage3" style="display: none;" onclick="goToPage3()">CONTINUE</a>
     </div>
 
     <!-- Página 3: Pedido de Namoro -->
@@ -206,7 +212,7 @@
         </div>
 
         <!-- Botão CONTINUE para a última página -->
-        <a href="#" class="btn" id="continueButtonFinalPage" onclick="goToFinalPage()">CONTINUE</a>
+        <a href="#" class="btn continue-btn" id="continueButtonFinalPage" onclick="goToFinalPage()">CONTINUE</a>
     </div>
 
     <!-- Última Página: Vídeo final e pedido de namoro -->
@@ -305,8 +311,8 @@
 
         // Função para mostrar a resposta após a escolha
         function showResponse() {
-            document.getElementById('questionBox').style.display = 'none';
-            document.getElementById('responseBox').style.display = 'block';
+            document.getElementById('questionBox').style.display = 'none'; // Esconder o quadro com as opções
+            document.getElementById('responseBox').style.display = 'block'; // Mostrar a resposta
 
             // Esconder a resposta após 20 segundos
             setTimeout(function() {
