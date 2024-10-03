@@ -78,6 +78,9 @@
             background-color: rgba(0, 0, 0, 0.7); /* Fundo transparente para o texto */
             width: 80%; /* Para garantir melhor visualização */
         }
+        .story-text p {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -104,15 +107,15 @@
                 allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <!-- Texto Completo da História -->
+        <!-- Texto Completo da História, exibido parágrafo por parágrafo -->
         <div class="story-text" id="storyText">
-            <p>Nossa história é tão maluca e ao mesmo tempo tão perfeita que, quando eu olho pra trás, tudo faz sentido.</p>
-            <p>Quem diria que, no dia 12/08, você ia aparecer na minha vida achando que eu era o Igor, e isso ia ser o ponto de partida de algo tão especial? Eu lembro exatamente da gente conversando, madrugada adentro, e eu já sentindo que algo diferente tava rolando ali. E você, entre 2h e 3h da manhã, já sabia que queria ficar comigo. Foi ali que tudo começou a mudar.</p>
-            <p>A gente se conheceu meio no susto, sem planejar, mas com uma intensidade que só nós dois entendemos. E foi só questão de tempo até, no dia 20 pra 21, a gente finalmente ficar pela primeira vez. Cara, parece que foi ontem, tudo acontecendo de um jeito tão natural, tão cheio de vontade e tesão. Desde aquele momento, eu soube que a conexão que a gente tinha ia muito além do que eu podia imaginar.</p>
-            <p>Teve aquele dia inesquecível, quando estávamos em call, e eu, do nada, cochilei. Você, com esse coração gigante, ficou com dó de me deixar ali sozinho, mas a vida sempre dá um jeitinho de bagunçar as coisas, né? Tonari ligou pra você e acabou te tirando da nossa call. Quando você voltou, o som de você entrando no Discord me acordou. E, bem, você sabe o que aconteceu depois... Eu acordei já cheio de vontade, e fiquei te provocando até que o inevitável rolou. Foi tudo tão intenso e tão nosso, que é impossível esquecer.</p>
-            <p>E aquela primeira mensagem sua? “Meu anjo, você ainda vive entre nós?” Eu lembro como se fosse hoje. Era leve, descontraída, e foi aí que eu percebi que a gente ia dar muito certo. Porque além de toda a intensidade, de todo o desejo, a gente tinha essa leveza, essa sintonia que é rara de encontrar.</p>
-            <p>O mais louco de tudo é que, desde aquele primeiro "oi", a vida da gente virou de ponta cabeça, mas de um jeito bom. A cada dia eu vejo o quanto a gente cresceu juntos, o quanto você me faz bem. Eu sempre soube que tinha algo diferente entre nós, mas a cada momento, essa certeza só cresce. Você, com seu jeito forte e carinhoso, me faz querer ser melhor, me faz acreditar que a gente pode conquistar tudo.</p>
-            <p>Eu tenho tanto orgulho da nossa história, de tudo que a gente viveu até aqui. E quando penso em tudo isso, só consigo sorrir, porque o que a gente tem é verdadeiro, é intenso, e, mais do que tudo, é nosso. Não foi fácil, não foi planejado, mas, sem dúvida, foi a melhor coisa que poderia ter acontecido.</p>
+            <p id="para1">Nossa história é tão maluca e ao mesmo tempo tão perfeita que, quando eu olho pra trás, tudo faz sentido. Quem diria que, no dia 12/08, você ia aparecer na minha vida achando que eu era o Igor, e isso ia ser o ponto de partida de algo tão especial?</p>
+            <p id="para2" style="display:none;">A gente se conheceu meio no susto, sem planejar, mas com uma intensidade que só nós dois entendemos. E foi só questão de tempo até, no dia 20 pra 21, a gente finalmente ficar pela primeira vez.</p>
+            <p id="para3" style="display:none;">Teve aquele dia inesquecível, quando estávamos em call, e eu, do nada, cochilei. Você, com esse coração gigante, ficou com dó de me deixar ali sozinho, mas a vida sempre dá um jeitinho de bagunçar as coisas, né?</p>
+            <p id="para4" style="display:none;">E aquela primeira mensagem sua? “Meu anjo, você ainda vive entre nós?” Eu lembro como se fosse hoje. Era leve, descontraída, e foi aí que eu percebi que a gente ia dar muito certo.</p>
+            <p id="para5" style="display:none;">O mais louco de tudo é que, desde aquele primeiro "oi", a vida da gente virou de ponta cabeça, mas de um jeito bom. A cada dia eu vejo o quanto a gente cresceu juntos, o quanto você me faz bem.</p>
+            <p id="para6" style="display:none;">Eu tenho tanto orgulho da nossa história, de tudo que a gente viveu até aqui. E quando penso em tudo isso, só consigo sorrir, porque o que a gente tem é verdadeiro, é intenso, e, mais do que tudo, é nosso.</p>
+            <p id="para7" style="display:none;">Obrigado por estar comigo nessa jornada, por me fazer rir, por dividir suas inseguranças, e por me mostrar o quanto a gente pode ser forte juntos.</p>
         </div>
     </div>
 
@@ -133,13 +136,19 @@
             document.getElementById('home').style.display = 'none'; // Esconder a primeira parte
             document.getElementById('pagina2').style.display = 'block'; // Mostrar a segunda parte
 
-            // Segunda parte: exibir o texto da história quando o vídeo atingir 4 minutos e 7 segundos
+            // Segunda parte: exibir o texto parágrafo por parágrafo a cada 20 segundos
             var iframe2 = document.getElementById('video2');
             var player2 = new Vimeo.Player(iframe2);
 
             player2.on('timeupdate', function(data) {
                 if (data.seconds >= 247) { // 4 minutos e 7 segundos (247 segundos)
-                    document.getElementById('storyText').style.display = 'block';
+                    document.getElementById('para1').style.display = 'block';
+                    setTimeout(function() { document.getElementById('para2').style.display = 'block'; }, 20000);
+                    setTimeout(function() { document.getElementById('para3').style.display = 'block'; }, 40000);
+                    setTimeout(function() { document.getElementById('para4').style.display = 'block'; }, 60000);
+                    setTimeout(function() { document.getElementById('para5').style.display = 'block'; }, 80000);
+                    setTimeout(function() { document.getElementById('para6').style.display = 'block'; }, 100000);
+                    setTimeout(function() { document.getElementById('para7').style.display = 'block'; }, 120000);
                 }
             });
         }
