@@ -103,13 +103,12 @@
     <!-- Página 2: Segunda Parte com o Outro Vídeo e Texto da História -->
     <div id="pagina2" class="section" style="display: none;">
         <div class="video-bg" id="videoContainer2">
-            <iframe id="video2" src="https://player.vimeo.com/video/1015490346?autoplay=1&muted=0&loop=0&title=0&byline=0&portrait=0"
-                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <!-- O vídeo será carregado dinamicamente -->
         </div>
 
         <!-- Texto Completo da História, exibido parágrafo por parágrafo -->
         <div class="story-text" id="storyText">
-            <p id="para1">Nossa história é tão maluca e ao mesmo tempo tão perfeita que, quando eu olho pra trás, tudo faz sentido. Quem diria que, no dia 12/08, você ia aparecer na minha vida achando que eu era o Igor, e isso ia ser o ponto de partida de algo tão especial?</p>
+            <p id="para1" style="display:none;">Nossa história é tão maluca e ao mesmo tempo tão perfeita que, quando eu olho pra trás, tudo faz sentido. Quem diria que, no dia 12/08, você ia aparecer na minha vida achando que eu era o Igor, e isso ia ser o ponto de partida de algo tão especial?</p>
             <p id="para2" style="display:none;">A gente se conheceu meio no susto, sem planejar, mas com uma intensidade que só nós dois entendemos. E foi só questão de tempo até, no dia 20 pra 21, a gente finalmente ficar pela primeira vez.</p>
             <p id="para3" style="display:none;">Teve aquele dia inesquecível, quando estávamos em call, e eu, do nada, cochilei. Você, com esse coração gigante, ficou com dó de me deixar ali sozinho, mas a vida sempre dá um jeitinho de bagunçar as coisas, né?</p>
             <p id="para4" style="display:none;">E aquela primeira mensagem sua? “Meu anjo, você ainda vive entre nós?” Eu lembro como se fosse hoje. Era leve, descontraída, e foi aí que eu percebi que a gente ia dar muito certo.</p>
@@ -135,6 +134,12 @@
         function goToNextSection() {
             document.getElementById('home').style.display = 'none'; // Esconder a primeira parte
             document.getElementById('pagina2').style.display = 'block'; // Mostrar a segunda parte
+
+            // Carregar o vídeo da página 2 dinamicamente quando a página 2 for exibida
+            document.getElementById('videoContainer2').innerHTML = `
+                <iframe id="video2" src="https://player.vimeo.com/video/1015490346?autoplay=1&muted=0&loop=0&title=0&byline=0&portrait=0"
+                    allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            `;
 
             // Segunda parte: exibir o texto parágrafo por parágrafo a cada 20 segundos
             var iframe2 = document.getElementById('video2');
