@@ -80,6 +80,8 @@
             width: 80%; /* Para garantir melhor visualização */
             height: 80%; /* Ajuste para caber no layout */
             overflow-y: scroll; /* Permitir rolagem se o texto for muito longo */
+            transition: opacity 1s ease-in-out; /* Transição suave ao esconder */
+            opacity: 1; /* Opacidade inicialmente 1 */
         }
     </style>
 </head>
@@ -149,17 +151,18 @@
 
             // Segunda parte: exibir o texto da história quando o vídeo atingir 4 minutos e 7 segundos
             player2.on('timeupdate', function(data) {
-                if (data.seconds >= 247) { // 4 minutos e 7 segundos (247 segundos)
-                    document.getElementById('storyText').style.display = 'block';
+                var storyText = document.getElementById('storyText');
 
-                    // Ocultar o texto após 1 minuto e 30 segundos (90 segundos)
-                    setTimeout(function() {
-                        document.getElementById('storyText').style.display = 'none';
-                    }, 90000); // 90000 milissegundos = 1 minuto e 30 segundos
+                // Exibir o texto da história aos 4:07 do vídeo
+                if (data.seconds >= 247 && data.seconds < 367) { // Entre 4:07 e 6:07
+                    storyText.style.display = 'block';
+                    storyText.style.opacity = 1; // Exibir texto com opacidade total
                 }
-            });
-        }
-    </script>
 
-</body>
-</html>
+                // Ocultar o texto quando o vídeo atingir 6:07
+                if (data.seconds >= 367) { // 6 minutos e 7 segundos
+                    storyText.style.opacity = 0; // Gradualmente esconder o texto
+                    setTimeout(function() {
+                        storyText.style.display = 'none';
+                    }, 1000); // Tempo para transição de desaparecimento suave
+               
