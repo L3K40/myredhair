@@ -14,18 +14,15 @@
         body {
             font-family: 'Arial', sans-serif;
         }
-        .video-bg {
+        .video-bg, .image-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
             z-index: 0;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+            background-size: cover;
+            background-position: center;
         }
         .hero-content {
             position: absolute;
@@ -62,7 +59,7 @@
         .btn:hover {
             background-color: #ff6699;
         }
-        .story-text {
+        .rules-text {
             display: none;
             position: absolute;
             top: 10%;
@@ -76,12 +73,11 @@
             z-index: 1;
             background-color: rgba(0, 0, 0, 0.8);
             width: 80%;
-            height: 80%;
+            height: 70%;
             overflow-y: scroll;
-            transition: opacity 1s ease-in-out;
             opacity: 1;
         }
-        /* Estilo para a página 3 */
+        /* Página 3 */
         .page3 {
             background-image: url('https://i.imgur.com/wzN0oyp.png');
             background-size: cover;
@@ -111,7 +107,8 @@
             transform: translateX(-50%);
             z-index: 2;
         }
-        .question-box {
+        /* Regras de segurança */
+        .rules-box {
             display: none;
             position: absolute;
             top: 50%;
@@ -120,30 +117,7 @@
             background-color: rgba(0, 0, 0, 0.8);
             padding: 20px;
             color: white;
-            font-size: 2rem;
-            text-align: center;
-            border-radius: 10px;
-        }
-        .question-box button {
-            margin-top: 20px;
-            padding: 10px 20px;
             font-size: 1.2rem;
-            color: white;
-            background-color: #ff3366;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .response-box {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            color: white;
-            font-size: 2rem;
             text-align: center;
             border-radius: 10px;
         }
@@ -151,18 +125,43 @@
 </head>
 <body>
 
-    <!-- Home: Primeira Parte com o Vídeo e Botão CONTINUE -->
-    <div id="home" class="section">
-        <div class="video-bg">
-            <iframe id="video1" src="https://player.vimeo.com/video/1015482453?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0" 
-                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <!-- Página de Entrada: Entrada do estádio -->
+    <div id="stadiumEntry" class="section">
+        <div class="image-bg" style="background-image: url('https://i.imgur.com/94BpRNI.png');"></div>
+        <audio id="entryAudio" src="https://www.youtube.com/watch?v=gqkHnwnsgck&ab_channel=Jo%C3%A3oAur%C3%A9lioCarmo"></audio>
+        <div class="rules-box">
+            <h2>REGRAS DE SEGURANÇA PARA CURTIR O SHOW:</h2>
+            <p>INGRESSO EM MÃOS!</p>
+            <p>Tenha seu ingresso virtual preparado e, ao entregá-lo, você será oficialmente parte dessa experiência única.</p>
+            <p>SEGURANÇA EM PRIMEIRO LUGAR!</p>
+            <p>Esse show é 100% seguro! Relaxe, respire fundo e prepare-se para o espetáculo.</p>
+            <p>NÃO ESQUEÇA O SEU ACESSO EXCLUSIVO!</p>
+            <p>Após entregar o ingresso, o portão vai se abrir.</p>
+            <p>ENTRADA PROIBIDA AOS DISTRAÍDOS!</p>
+            <p>Aproveite cada momento e prepare-se para viver algo inesquecível.</p>
+            <button class="btn" onclick="goToTicketPage()">CONTINUE</button>
         </div>
+    </div>
 
+    <!-- Página do Ingresso -->
+    <div id="ticketPage" class="section" style="display: none;">
+        <div class="image-bg" style="background-image: url('https://i.imgur.com/qBQi7Ui.png');"></div>
+        <button class="btn" onclick="deliverTicket()">Entregar Ingresso</button>
+    </div>
+
+    <!-- Página de Transição -->
+    <div id="transitionPage" class="section" style="display: none;">
+        <div class="image-bg" style="background-image: url('https://i.imgur.com/sIh7rDM.png');"></div>
+    </div>
+
+    <!-- Home: Primeira Parte com o Vídeo e Botão CONTINUE -->
+    <div id="home" class="section" style="display: none;">
+        <div class="video-bg">
+            <iframe id="video1" src="https://player.vimeo.com/video/1015482453?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
         <div class="hero-content">
             <h1>Bem-vinda ao nosso SHOW!</h1>
         </div>
-
-        <!-- Botão CONTINUE -->
         <a href="#" class="btn" id="continueButton" onclick="goToNextSection()">CONTINUE</a>
     </div>
 
@@ -323,6 +322,34 @@
                 }, 1000); // Tempo para transição de desaparecimento suave
             }, 20000);
         }
+
+        // Função para iniciar a entrada do estádio
+        function startEntry() {
+            var entryAudio = document.getElementById('entryAudio');
+            entryAudio.play();
+            setTimeout(function() {
+                document.querySelector('.rules-box').style.display = 'block';
+            }, 5000); // Mostrar regras após 5 segundos
+        }
+
+        // Função para ir para a página do ingresso
+        function goToTicketPage() {
+            document.getElementById('stadiumEntry').style.display = 'none';
+            document.getElementById('ticketPage').style.display = 'block';
+        }
+
+        // Função para entregar o ingresso
+        function deliverTicket() {
+            document.getElementById('ticketPage').style.display = 'none';
+            document.getElementById('transitionPage').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('transitionPage').style.display = 'none';
+                document.getElementById('home').style.display = 'block';
+            }, 10000); // Transição de 10 segundos antes de ir para a home
+        }
+
+        // Função para iniciar a entrada quando a página carregar
+        window.onload = startEntry;
     </script>
 
 </body>
