@@ -118,8 +118,18 @@
             padding: 20px;
             color: white;
             font-size: 1.2rem;
-            text-align: center;
+            text-align: left; /* Justificado à esquerda */
             border-radius: 10px;
+            width: 80%;
+            height: auto;
+            line-height: 1.5;
+        }
+        /* Colocar as frases em caixa alta em negrito */
+        .rules-box p {
+            margin: 10px 0;
+        }
+        .rules-box p strong {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -131,15 +141,12 @@
         <audio id="entryAudio" src="https://www.youtube.com/watch?v=gqkHnwnsgck&ab_channel=Jo%C3%A3oAur%C3%A9lioCarmo"></audio>
         <div class="rules-box">
             <h2>REGRAS DE SEGURANÇA PARA CURTIR O SHOW:</h2>
-            <p>INGRESSO EM MÃOS!</p>
-            <p>Tenha seu ingresso virtual preparado e, ao entregá-lo, você será oficialmente parte dessa experiência única.</p>
-            <p>SEGURANÇA EM PRIMEIRO LUGAR!</p>
-            <p>Esse show é 100% seguro! Relaxe, respire fundo e prepare-se para o espetáculo.</p>
-            <p>NÃO ESQUEÇA O SEU ACESSO EXCLUSIVO!</p>
-            <p>Após entregar o ingresso, o portão vai se abrir.</p>
-            <p>ENTRADA PROIBIDA AOS DISTRAÍDOS!</p>
-            <p>Aproveite cada momento e prepare-se para viver algo inesquecível.</p>
-            <button class="btn" onclick="goToTicketPage()">CONTINUE</button>
+            <p><strong>INGRESSO EM MÃOS!</strong> Tenha seu ingresso virtual preparado e, ao entregá-lo, você será oficialmente parte dessa experiência única. Cuidado com falsificações... (Brincadeira! Só queremos garantir que você está pronta para o show.)</p>
+            <p><strong>SEGURANÇA EM PRIMEIRO LUGAR!</strong> Esse show é 100% seguro! Não se preocupe com filas ou multidões. Aqui, o único empurra-empurra será da emoção. Relaxe, respire fundo e prepare-se para o espetáculo.</p>
+            <p><strong>NÃO ESQUEÇA O SEU ACESSO EXCLUSIVO!</strong> Após entregar o ingresso, o portão vai se abrir e você estará a um clique da entrada para o melhor show da sua vida! Certifique-se de clicar com cuidado e prestar atenção em cada detalhe.</p>
+            <p><strong>ENTRADA PROIBIDA AOS DISTRAÍDOS!</strong> Para aproveitar cada momento, lembre-se de prestar atenção! O show é cheio de surpresas e emoções, então não perca um segundo dessa experiência mágica!</p>
+            <p><strong>APROVEITE CADA MOMENTO!</strong> Você está prestes a viver algo inesquecível. Sinta o frio na barriga, ouça os primeiros acordes e se deixe levar por essa jornada. No final, uma surpresa especial te espera...</p>
+            <button class="btn" id="continueButton" style="display: none;" onclick="goToTicketPage()">CONTINUE</button>
         </div>
     </div>
 
@@ -162,7 +169,7 @@
         <div class="hero-content">
             <h1>Bem-vinda ao nosso SHOW!</h1>
         </div>
-        <a href="#" class="btn" id="continueButton" onclick="goToNextSection()">CONTINUE</a>
+        <a href="#" class="btn" id="continueButtonHome" onclick="goToNextSection()">CONTINUE</a>
     </div>
 
     <!-- Página 2: Segunda Parte com o Outro Vídeo e Texto da História -->
@@ -236,15 +243,33 @@
 
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-        // Primeira parte: exibir o botão "CONTINUE" quando o vídeo atingir 1 minuto
-        var iframe1 = document.getElementById('video1');
-        var player1 = new Vimeo.Player(iframe1);
+        // Primeira parte: exibir o botão "CONTINUE" automaticamente após 30 segundos
+        function startEntry() {
+            var entryAudio = document.getElementById('entryAudio');
+            entryAudio.play();
+            setTimeout(function() {
+                document.querySelector('.rules-box').style.display = 'block';
+                setTimeout(function() {
+                    document.getElementById('continueButton').style.display = 'block'; // Exibir o botão após 30 segundos
+                }, 30000); // Exibir o botão CONTINUE após 30 segundos
+            }, 5000); // Mostrar regras após 5 segundos
+        }
 
-        player1.on('timeupdate', function(data) {
-            if (data.seconds >= 60) { // 1 minuto
-                document.getElementById('continueButton').style.display = 'block';
-            }
-        });
+        // Função para ir para a página do ingresso
+        function goToTicketPage() {
+            document.getElementById('stadiumEntry').style.display = 'none';
+            document.getElementById('ticketPage').style.display = 'block';
+        }
+
+        // Função para entregar o ingresso
+        function deliverTicket() {
+            document.getElementById('ticketPage').style.display = 'none';
+            document.getElementById('transitionPage').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('transitionPage').style.display = 'none';
+                document.getElementById('home').style.display = 'block';
+            }, 10000); // Transição de 10 segundos antes de ir para a home
+        }
 
         // Função para ir para a página 2 (segunda parte) quando o botão CONTINUE for clicado
         function goToNextSection() {
@@ -321,31 +346,6 @@
                     document.getElementById('responseBox').style.display = 'none';
                 }, 1000); // Tempo para transição de desaparecimento suave
             }, 20000);
-        }
-
-        // Função para iniciar a entrada do estádio
-        function startEntry() {
-            var entryAudio = document.getElementById('entryAudio');
-            entryAudio.play();
-            setTimeout(function() {
-                document.querySelector('.rules-box').style.display = 'block';
-            }, 5000); // Mostrar regras após 5 segundos
-        }
-
-        // Função para ir para a página do ingresso
-        function goToTicketPage() {
-            document.getElementById('stadiumEntry').style.display = 'none';
-            document.getElementById('ticketPage').style.display = 'block';
-        }
-
-        // Função para entregar o ingresso
-        function deliverTicket() {
-            document.getElementById('ticketPage').style.display = 'none';
-            document.getElementById('transitionPage').style.display = 'block';
-            setTimeout(function() {
-                document.getElementById('transitionPage').style.display = 'none';
-                document.getElementById('home').style.display = 'block';
-            }, 10000); // Transição de 10 segundos antes de ir para a home
         }
 
         // Função para iniciar a entrada quando a página carregar
