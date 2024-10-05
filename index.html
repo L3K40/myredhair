@@ -273,3 +273,57 @@
                     setTimeout(function() {
                         storyText.style.display = 'none';
                     }, 1000); // Tempo para transição de desaparecimento suave
+                }
+
+                // Exibir o botão CONTINUE para a página 3 aos 6:40
+                if (data.seconds >= 400) { // 6 minutos e 40 segundos (400 segundos)
+                    document.getElementById('continueButtonPage3').style.display = 'block';
+                }
+            });
+        }
+
+        // Função para ir para a página 3 (pedido de namoro)
+        function goToPage3() {
+            document.getElementById('pagina2').style.display = 'none'; // Esconder a página 2
+            document.getElementById('pagina3').style.display = 'block'; // Mostrar a página 3
+
+            // Mostrar o botão CONTINUE imediatamente ao entrar na página 3
+            document.getElementById('continueButtonFinalPage').style.display = 'block';
+        }
+
+        // Função para ir para a última página (vídeo final)
+        function goToFinalPage() {
+            document.getElementById('pagina3').style.display = 'none'; // Esconder a página 3
+            document.getElementById('finalPage').style.display = 'block'; // Mostrar a última página
+
+            // Reproduzir o vídeo final
+            var finalVideo = document.getElementById('finalVideo');
+            var playerFinal = new Vimeo.Player(finalVideo);
+            playerFinal.play();
+
+            // Exibir a caixa "Quer namorar comigo?" aos 2:37 do vídeo
+            playerFinal.on('timeupdate', function(data) {
+                if (data.seconds >= 157 && !document.getElementById('questionBox').classList.contains('hidden')) { // 2 minutos e 37 segundos (157 segundos)
+                    document.getElementById('questionBox').style.display = 'block';
+                }
+            });
+        }
+
+        // Função para mostrar a resposta após a escolha
+        function showResponse() {
+            document.getElementById('questionBox').classList.add('hidden'); // Marcar como escondido
+            document.getElementById('questionBox').style.display = 'none'; // Esconder o quadro com as opções imediatamente
+            document.getElementById('responseBox').style.display = 'block'; // Mostrar a resposta
+
+            // Esconder a resposta após 20 segundos
+            setTimeout(function() {
+                document.getElementById('responseBox').style.opacity = 0; // Gradualmente esconder o texto
+                setTimeout(function() {
+                    document.getElementById('responseBox').style.display = 'none';
+                }, 1000); // Tempo para transição de desaparecimento suave
+            }, 20000);
+        }
+    </script>
+
+</body>
+</html>
