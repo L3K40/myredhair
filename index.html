@@ -111,6 +111,18 @@
         <div class="image-bg" style="background-image: url('https://i.imgur.com/sIh7rDM.png');"></div>
     </div>
 
+    <!-- Home: Primeira Parte com o Vídeo e Botão CONTINUE -->
+    <div id="home" class="section" style="display: none;">
+        <div class="video-bg">
+            <iframe id="video1" src="https://player.vimeo.com/video/1015482453?muted=1&loop=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="hero-content">
+            <h1>Bem-vinda ao nosso SHOW!</h1>
+        </div>
+        <a href="#" class="btn" id="continueButtonHome" onclick="goToNextSection()">CONTINUE</a>
+    </div>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
         // Função para iniciar a entrada e exibir o texto e o botão "CONTINUE"
         function startEntry() {
@@ -145,13 +157,19 @@
             setTimeout(function() {
                 document.getElementById('transitionPage').style.display = 'none';
                 document.getElementById('home').style.display = 'block';
+
+                // Iniciar o vídeo automaticamente na página home
+                var videoFrame = document.getElementById('video1');
+                var videoPlayer = new Vimeo.Player(videoFrame);
+                videoPlayer.play(); // Iniciar o vídeo na página home
+
             }, 10000); // 10 segundos
         }
 
         // Iniciar a entrada automaticamente quando a página carregar
         window.onload = startEntry;
     </script>
-
+    
     <!-- Página 2: Segunda Parte com o Outro Vídeo e Texto da História -->
     <div id="pagina2" class="section" style="display: none;">
         <div class="video-bg" id="videoContainer2">
