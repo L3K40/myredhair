@@ -136,7 +136,7 @@
         <a href="#" class="btn" id="continueButtonHome" style="display:none;" onclick="goToNextSection()">CONTINUE</a>
     </div>
 
- <!-- Página 5: Segundo vídeo e texto da história -->
+    <!-- Página 5: Segundo vídeo e texto da história -->
     <div id="pagina2" class="section" style="display: none;">
         <div class="video-bg" id="videoContainer2">
             <iframe id="video2" src="https://player.vimeo.com/video/1015490346?muted=0&loop=0&title=0&byline=0&portrait=0"
@@ -144,7 +144,7 @@
         </div>
 
         <!-- Texto da História da Segunda Parte -->
-        <div class="story-text" id="storyText">
+        <div class="story-text" id="storyText" style="display: none;">
             <h2>Um pouco sobre nosso show...</h2>
             <p>Eu tava aqui lembrando de como tudo começou, e é engraçado pensar que a nossa história começou com aquela mensagem: "Meu anjo, você ainda vive entre nós?". No dia 12/08, você ainda achava que tava falando com o Igor, mas, sem saber, esse foi o início de algo muito maior do que a gente poderia imaginar.</p>
             <p>Naquela madrugada, entre 2h e 3h, você percebeu que queria ficar comigo, e a conexão entre nós foi crescendo de um jeito tão natural que parecia que já tava escrito. Quanto mais a gente conversava, mais eu sentia que tinha algo especial rolando ali. E foi só questão de tempo pra isso se transformar em algo real.</p>
@@ -282,13 +282,17 @@
             });
         }
 
+        // Função para ir para a
+
         // Função para ir para a página 3 (pedido de namoro)
         function goToPage3() {
             document.getElementById('pagina2').style.display = 'none'; // Esconder a página 2
             document.getElementById('pagina3').style.display = 'block'; // Mostrar a página 3
 
             // Mostrar o botão CONTINUE imediatamente ao entrar na página 3
-            document.getElementById('continueButtonFinalPage').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('continueButtonFinalPage').style.display = 'block';
+            }, 5000);
         }
 
         // Função para ir para a última página (vídeo final)
