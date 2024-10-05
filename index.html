@@ -59,55 +59,6 @@
         .btn:hover {
             background-color: #ff6699;
         }
-        .rules-text {
-            display: none;
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translate(-50%, 0);
-            color: white;
-            text-align: left;
-            font-size: 1.2rem;
-            line-height: 1.5;
-            padding: 20px;
-            z-index: 1;
-            background-color: rgba(0, 0, 0, 0.8);
-            width: 80%;
-            height: 70%;
-            overflow-y: scroll;
-            opacity: 1;
-        }
-        /* Página 3 */
-        .page3 {
-            background-image: url('https://i.imgur.com/wzN0oyp.png');
-            background-size: cover;
-            background-position: center;
-            display: none;
-            height: 100vh;
-            width: 100vw;
-            position: relative;
-        }
-        .page3-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 1.5rem;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            width: 80%;
-            text-align: justify;
-        }
-        .continue-btn {
-            position: absolute;
-            bottom: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-        }
-        /* Regras de segurança */
         .rules-box {
             display: none;
             position: absolute;
@@ -118,13 +69,12 @@
             padding: 20px;
             color: white;
             font-size: 1.2rem;
-            text-align: left; /* Justificado à esquerda */
+            text-align: left;
             border-radius: 10px;
             width: 80%;
             height: auto;
             line-height: 1.5;
         }
-        /* Colocar as frases em caixa alta em negrito */
         .rules-box p {
             margin: 10px 0;
         }
@@ -139,7 +89,7 @@
     <div id="stadiumEntry" class="section">
         <div class="image-bg" style="background-image: url('https://i.imgur.com/94BpRNI.png');"></div>
         <audio id="entryAudio" src="https://www.youtube.com/watch?v=gqkHnwnsgck&ab_channel=Jo%C3%A3oAur%C3%A9lioCarmo"></audio>
-        <div class="rules-box">
+        <div class="rules-box" id="rulesBox">
             <h2>REGRAS DE SEGURANÇA PARA CURTIR O SHOW:</h2>
             <p><strong>INGRESSO EM MÃOS!</strong> Tenha seu ingresso virtual preparado e, ao entregá-lo, você será oficialmente parte dessa experiência única. Cuidado com falsificações... (Brincadeira! Só queremos garantir que você está pronta para o show.)</p>
             <p><strong>SEGURANÇA EM PRIMEIRO LUGAR!</strong> Esse show é 100% seguro! Não se preocupe com filas ou multidões. Aqui, o único empurra-empurra será da emoção. Relaxe, respire fundo e prepare-se para o espetáculo.</p>
@@ -161,16 +111,46 @@
         <div class="image-bg" style="background-image: url('https://i.imgur.com/sIh7rDM.png');"></div>
     </div>
 
-    <!-- Home: Primeira Parte com o Vídeo e Botão CONTINUE -->
-    <div id="home" class="section" style="display: none;">
-        <div class="video-bg">
-            <iframe id="video1" src="https://player.vimeo.com/video/1015482453?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="hero-content">
-            <h1>Bem-vinda ao nosso SHOW!</h1>
-        </div>
-        <a href="#" class="btn" id="continueButtonHome" onclick="goToNextSection()">CONTINUE</a>
-    </div>
+    <script>
+        // Função para iniciar a entrada e exibir o texto e o botão "CONTINUE"
+        function startEntry() {
+            var entryAudio = document.getElementById('entryAudio');
+            entryAudio.play();
+
+            // Mostrar as regras de segurança após 2 segundos
+            setTimeout(function() {
+                document.getElementById('rulesBox').style.display = 'block';
+                // Exibir o botão CONTINUE logo após o texto aparecer
+                document.getElementById('continueButton').style.display = 'block';
+            }, 2000); // 2 segundos para o texto aparecer
+        }
+
+        // Função para ir para a página do ingresso
+        function goToTicketPage() {
+            document.getElementById('stadiumEntry').style.display = 'none';
+            document.getElementById('ticketPage').style.display = 'block';
+
+            // Exibir o botão "ENTREGAR INGRESSO" 5 segundos após a imagem do segurança aparecer
+            setTimeout(function() {
+                document.getElementById('deliverTicketBtn').style.display = 'block';
+            }, 5000); // 5 segundos
+        }
+
+        // Função para entregar o ingresso e ir para a página de transição
+        function deliverTicket() {
+            document.getElementById('ticketPage').style.display = 'none';
+            document.getElementById('transitionPage').style.display = 'block';
+
+            // Após 10 segundos, escurece a tela e vai para a página do primeiro vídeo
+            setTimeout(function() {
+                document.getElementById('transitionPage').style.display = 'none';
+                document.getElementById('home').style.display = 'block';
+            }, 10000); // 10 segundos
+        }
+
+        // Iniciar a entrada automaticamente quando a página carregar
+        window.onload = startEntry;
+    </script>
 
     <!-- Página 2: Segunda Parte com o Outro Vídeo e Texto da História -->
     <div id="pagina2" class="section" style="display: none;">
