@@ -302,12 +302,17 @@
                     }, 1000); // Tempo para transição de desaparecimento suave
                 }
 
-                // Exibir o botão CONTINUE para a página 3 aos 6:40
-                if (data.seconds >= 400) { // 6 minutos e 40 segundos (400 segundos)
-                    document.getElementById('continueButtonPage3').style.display = 'block';
-                }
-            });
-        }
+                // Função para ir para a página 3 (pedido de namoro)
+function goToPage3() {
+    document.getElementById('pagina2').style.display = 'none'; // Esconder a página 2
+    document.getElementById('pagina3').style.display = 'block'; // Mostrar a página 3
+
+    // Mostrar o texto e o botão CONTINUE imediatamente ao entrar na página 3
+    var page3Text = document.querySelector('.page3-text');
+    page3Text.style.display = 'block';
+    document.getElementById('continueButtonFinalPage').style.display = 'block';
+}
+
 
         // Função para ir para a página 3 (pedido de namoro)
         function goToPage3() {
