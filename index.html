@@ -34,17 +34,17 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: #ff99cc; /* Cor mais leve e romântica */
+            color: #ff99cc;
             text-align: center;
             z-index: 1;
-            font-family: 'Pacifico', cursive; /* Fonte cursiva mais suave */
+            font-family: 'Pacifico', cursive;
         }
         h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
-            color: #ff99cc; /* Cor leve */
-            text-shadow: 2px 2px 8px rgba(255, 182, 193, 0.7); /* Sombra suave */
-            transition: opacity 2s ease-in-out; /* Animação suave */
+            color: #ff99cc;
+            text-shadow: 2px 2px 8px rgba(255, 182, 193, 0.7);
+            transition: opacity 2s ease-in-out;
         }
         .btn {
             padding: 15px 30px;
@@ -66,7 +66,7 @@
         .btn:hover {
             background-color: #ff6699;
         }
-        .rules-box {
+        .rules-box, .story-text, .page3-text, .question-box, .response-box {
             display: none;
             position: absolute;
             top: 50%;
@@ -79,14 +79,40 @@
             text-align: left;
             border-radius: 10px;
             width: 80%;
-            height: auto;
             line-height: 1.5;
+            z-index: 1;
         }
-        .rules-box p {
+        .rules-box p, .story-text p {
             margin: 10px 0;
         }
-        .rules-box p strong {
+        .rules-box p strong, .story-text p strong {
             font-weight: bold;
+        }
+        .page3 {
+            background-image: url('https://i.imgur.com/wzN0oyp.png');
+            background-size: cover;
+            background-position: center;
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+        }
+        .continue-btn {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        .question-box button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #ff3366;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -159,8 +185,7 @@
     </div>
 
     <!-- Página 6: Pedido de Namoro -->
-    <div id="pagina3" class="section" style="display: none;">
-        <div class="image-bg" style="background-image: url('https://i.imgur.com/wzN0oyp.png');"></div>
+    <div id="pagina3" class="page3" style="display: none;">
         <div class="page3-text">
             <h2>Amor,</h2>
             <p>Eu tava aqui pensando em tudo que a gente já viveu até agora, e como cada detalhe da nossa história faz sentido. Desde aquela primeira mensagem despretensiosa até as conversas de madrugada, onde a gente foi se conectando sem nem perceber, parece que o universo deu um jeito de juntar a gente de um jeito perfeito, mesmo no meio do caos.</p>
@@ -310,12 +335,6 @@
                 }
             });
         }
-
-        // Função para mostrar a resposta após a escolha
-        function showResponse() {
-            document.getElementById('questionBox').classList.add('hidden'); // Marcar como escondido
-            document.getElementById('questionBox').style.display = 'none'; // Esconder o quadro com as opções imediatamente
-            document.getElementById('responseBox').style.display = 'block';
 
         // Função para mostrar a resposta após a escolha
         function showResponse() {
