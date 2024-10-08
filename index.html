@@ -274,36 +274,43 @@
             }
         });
 
-        // Função para ir para a página 2 (segunda parte) quando o botão CONTINUE for clicado
-        function goToNextSection() {
-            document.getElementById('home').style.display = 'none'; // Esconder a primeira parte
-            document.getElementById('pagina2').style.display = 'block'; // Mostrar a segunda parte
+       // Função para ir para a página 2 (segunda parte) quando o botão CONTINUE for clicado
+function goToNextSection() {
+    document.getElementById('home').style.display = 'none'; // Esconder a primeira parte
+    document.getElementById('pagina2').style.display = 'block'; // Mostrar a segunda parte
 
-            // Reproduzir o vídeo da segunda parte quando a página 2 for exibida
-            var iframe2 = document.getElementById('video2');
-            var player2 = new Vimeo.Player(iframe2);
-            player2.play(); // Iniciar o vídeo da página 2
+    // Reproduzir o vídeo da segunda parte quando a página 2 for exibida
+    var iframe2 = document.getElementById('video2');
+    var player2 = new Vimeo.Player(iframe2);
+    player2.play(); // Iniciar o vídeo da página 2
 
-            // Segunda parte: exibir o texto da história quando o vídeo atingir 4 minutos e 7 segundos
-            player2.on('timeupdate', function(data) {
-                var storyText = document.getElementById('storyText');
+    // Segunda parte: exibir o texto da história quando o vídeo atingir 4 minutos e 7 segundos
+    player2.on('timeupdate', function(data) {
+        var storyText = document.getElementById('storyText');
 
-                // Exibir o texto da história aos 4:07 do vídeo
-                if (data.seconds >= 247 && data.seconds < 367) { // Entre 4:07 e 6:07
-                    storyText.style.display = 'block';
-                    storyText.style.opacity = 1; // Exibir texto com opacidade total
-                }
+        // Exibir o texto da história aos 4:07 do vídeo
+        if (data.seconds >= 247 && data.seconds < 367) { // Entre 4:07 e 6:07
+            storyText.style.display = 'block';
+            storyText.style.opacity = 1; // Exibir texto com opacidade total
+        }
 
-                // Ocultar o texto quando o vídeo atingir 6:07
-                if (data.seconds >= 367) { // 6 minutos e 7 segundos
-                    storyText.style.opacity = 0; // Gradualmente esconder o texto
-                    setTimeout(function() {
-                        storyText.style.display = 'none';
-                    }, 1000); // Tempo para transição de desaparecimento suave
-                }
+        // Ocultar o texto quando o vídeo atingir 6:07
+        if (data.seconds >= 367) { // 6 minutos e 7 segundos
+            storyText.style.opacity = 0; // Gradualmente esconder o texto
+            setTimeout(function() {
+                storyText.style.display = 'none';
+            }, 1000); // Tempo para transição de desaparecimento suave
+        }
+
+        // Exibir o botão CONTINUE para a página 3 aos 6:40
+        if (data.seconds >= 400) { // 6 minutos e 40 segundos (400 segundos)
+            document.getElementById('continueButtonPage3').style.display = 'block';
+        }
+    });
+}
 
                 // Função para ir para a página 3 (pedido de namoro)
-function goToPage3() {
+    function goToPage3() {
     document.getElementById('pagina2').style.display = 'none'; // Esconder a página 2
     document.getElementById('pagina3').style.display = 'block'; // Mostrar a página 3
 
@@ -312,16 +319,6 @@ function goToPage3() {
     page3Text.style.display = 'block';
     document.getElementById('continueButtonFinalPage').style.display = 'block';
 }
-
-
-        // Função para ir para a página 3 (pedido de namoro)
-        function goToPage3() {
-            document.getElementById('pagina2').style.display = 'none'; // Esconder a página 2
-            document.getElementById('pagina3').style.display = 'block'; // Mostrar a página 3
-
-            // Mostrar o botão CONTINUE imediatamente ao entrar na página 3
-            document.getElementById('continueButtonFinalPage').style.display = 'block';
-        }
 
         // Função para ir para a última página (vídeo final)
         function goToFinalPage() {
