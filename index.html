@@ -145,51 +145,80 @@
                 allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
 
-        <!-- Texto da História da Segunda Parte -->
-        <div class="story-text" id="storyText" style="display: none;">
+        <!-- Texto da História da Página 2 -->
+        <div class="story-text" id="storyText">
             <h2>Um pouco sobre nosso show...</h2>
+
             <p>Eu tava aqui lembrando de como tudo começou, e é engraçado pensar que a nossa história começou com aquela mensagem: "Meu anjo, você ainda vive entre nós?". No dia 12/08, você ainda achava que tava falando com o Igor, mas, sem saber, esse foi o início de algo muito maior do que a gente poderia imaginar.</p>
+
             <p>Naquela madrugada, entre 2h e 3h, você percebeu que queria ficar comigo, e a conexão entre nós foi crescendo de um jeito tão natural que parecia que já tava escrito. Quanto mais a gente conversava, mais eu sentia que tinha algo especial rolando ali. E foi só questão de tempo pra isso se transformar em algo real.</p>
+
             <p>A gente ficou pela primeira vez na noite do dia 20 para o dia 21, e, sério, que noite! Foi aquela mistura de tesão, vontade, e uma intensidade que só nós dois entendemos. Lembra da nossa call? Eu acabei cochilando, e você, com esse coração gigante, ficou com dó de me deixar sozinho. Mas claro que o Tonari tinha que ligar bem naquela hora, te tirando da nossa call. Quando você voltou, o som de você entrando no Discord me acordou, e eu já tava cheio de vontade. Comecei a te provocar e, bom... o resto é história. Aquela noite foi só o começo de tudo que a gente construiu até aqui.</p>
+
             <p>O mais louco é que, além de toda essa intensidade, o que mais me impressiona é como a gente se encaixa. Desde aquele primeiro "oi", a gente foi se descobrindo, se entendendo, e criando algo que vai muito além do desejo. É sintonia, é parceria, é saber que a gente tá junto não só nos momentos bons, mas em tudo que vier.</p>
+
             <p>Eu me orgulho de cada passo que a gente deu até agora. O jeito que a gente se apoia, se provoca, e se cuida é algo que eu nunca encontrei antes. E quando penso em tudo isso, só consigo sorrir, porque sei que a gente tem algo raro, algo verdadeiro.</p>
+
             <p>Desde aquele dia, minha vida mudou de uma forma que eu nunca imaginei. O que a gente tem é único, e eu sou grato por cada momento que passamos juntos. E tenho certeza de que ainda vamos construir muito mais. Tô aqui, firme, do seu lado, pronto pra viver tudo o que a vida tem reservado pra nós.</p>
         </div>
+
+        <!-- Botão CONTINUE para ir para a Página 3 -->
         <a href="#" class="btn continue-btn" id="continueButtonPage3" style="display: none;" onclick="goToPage3()">CONTINUE</a>
     </div>
 
-    <!-- Página 6: Pedido de Namoro -->
-    <div id="pagina3" class="section" style="display: none;">
-        <div class="image-bg" style="background-image: url('https://i.imgur.com/wzN0oyp.png');"></div>
+    <!-- Página 3: Pedido de Namoro -->
+    <div id="pagina3" class="page3">
         <div class="page3-text">
             <h2>Amor,</h2>
             <p>Eu tava aqui pensando em tudo que a gente já viveu até agora, e como cada detalhe da nossa história faz sentido. Desde aquela primeira mensagem despretensiosa até as conversas de madrugada, onde a gente foi se conectando sem nem perceber, parece que o universo deu um jeito de juntar a gente de um jeito perfeito, mesmo no meio do caos.</p>
+
             <p>A gente já passou por tanto, né? Tantas conversas, risadas, provocações e momentos intensos que só nós dois sabemos o peso que eles têm. E, ao mesmo tempo, tudo flui de um jeito tão natural que é impossível não sorrir quando penso em nós dois. Você chegou na minha vida quando eu menos esperava e, desde então, nada mais foi igual.</p>
+
             <p>Eu vejo o quanto você se entrega, o quanto você é forte, e o quanto você se dedica. E isso me faz te admirar cada vez mais. Você é aquele tipo de pessoa que inspira, que faz a vida ter mais cor, mais significado. E eu sou grato por cada segundo ao seu lado, porque você me trouxe algo que eu nem sabia que faltava: leveza, paz, e ao mesmo tempo, uma paixão que faz o coração bater mais forte.</p>
+
             <p>E agora, olhando pra nossa história, pra tudo o que a gente já construiu, eu só consigo pensar em uma coisa: eu não quero que isso acabe. Não quero que esse "nós" seja só um capítulo, eu quero que a gente escreva o livro todo junto, que a gente continue construindo essa conexão, crescendo juntos, superando cada obstáculo e celebrando cada vitória. Porque, de verdade, eu nunca me senti tão completo quanto me sinto com você.</p>
+
             <p>Então, é por isso que hoje eu tô aqui, com o coração acelerado e com uma certeza: eu quero que você seja minha, de um jeito que vai além das palavras. Eu quero ser o cara que tá do seu lado em cada momento, seja nos dias fáceis ou nos dias difíceis, rindo das nossas besteiras ou enfrentando os desafios que a vida traz.</p>
+
             <p>Amor, a verdade é que eu já sou seu, desde o momento que a gente começou a se conhecer. E agora eu te pergunto, de coração aberto e com a certeza de que é com você que eu quero estar: aceita namorar comigo e continuar escrevendo a história desse show incrível?</p>
         </div>
+
+        <!-- Botão CONTINUE para a última página -->
         <a href="#" class="btn continue-btn" id="continueButtonFinalPage" onclick="goToFinalPage()">CONTINUE</a>
     </div>
 
-    <!-- Página 7: Vídeo final e pedido de namoro -->
+    <!-- Última Página: Vídeo final e pedido de namoro -->
     <div id="finalPage" class="section" style="display: none;">
         <div class="video-bg">
-            <iframe id="finalVideo" src="https://player.vimeo.com/video/1015518480?loop=0&title=0&byline=0&portrait=0" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="finalVideo" src="https://player.vimeo.com/video/1015518480?loop=0&title=0&byline=0&portrait=0" 
+                allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <div class="question-box" id="questionBox" style="display: none;">
+
+        <!-- Caixa com a pergunta "Quer namorar comigo?" -->
+        <div class="question-box" id="questionBox">
             <p>QUER NAMORAR COMIGO?</p>
             <button onclick="showResponse()">SIM</button>
             <button onclick="showResponse()">COM CERTEZA</button>
         </div>
-        <div class="response-box" id="responseBox" style="display: none;">
+
+        <!-- Caixa de resposta após escolher uma opção -->
+        <div class="response-box" id="responseBox">
             <p>Então me liga pra me contar sua resposta e seguir curtindo nosso show juntos! Eu te amo!</p>
         </div>
     </div>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
+        // Primeira parte: exibir o botão "CONTINUE" quando o vídeo atingir 1 minuto
+        var iframe1 = document.getElementById('video1');
+        var player1 = new Vimeo.Player(iframe1);
+
+        player1.on('timeupdate', function(data) {
+            if (data.seconds >= 60) { // 1 minuto
+                document.getElementById('continueButton').style.display = 'block';
+            }
+        });
+        
         // Função para reproduzir o áudio e exibir regras após 5 segundos
         window.onload = function() {
             var audio = document.getElementById('entryAudio');
