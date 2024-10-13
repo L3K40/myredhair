@@ -121,9 +121,6 @@
     <!-- Página de Entrada: Entrada do estádio -->
     <div id="stadiumEntry" class="section">
         <div class="image-bg" style="background-image: url('https://i.imgur.com/94BpRNI.png');"></div>
-        <audio id="entryAudio" autoplay>
-            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        </audio>
         <div class="rules-box" id="rulesBox">
             <h2>REGRAS DE SEGURANÇA PARA CURTIR O SHOW:</h2>
             <p><strong>INGRESSO EM MÃOS!</strong> Tenha seu ingresso virtual preparado e, ao entregá-lo, você será oficialmente parte dessa experiência única. Cuidado com falsificações... (Brincadeira! Só queremos garantir que você está pronta para o show.)</p>
@@ -217,8 +214,6 @@
     <script>
         // Função para reproduzir o áudio e exibir regras após 5 segundos
         window.onload = function() {
-            var audio = document.getElementById('entryAudio');
-            audio.play();
             setTimeout(function() {
                 document.getElementById('rulesBox').style.display = 'block';
             }, 5000);
