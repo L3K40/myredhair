@@ -40,23 +40,23 @@
             font-family: 'Pacifico', cursive;
         }
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem; /* Menor para mobile */
             margin-bottom: 20px;
             color: #ff99cc;
             text-shadow: 2px 2px 8px rgba(255, 182, 193, 0.7);
             transition: opacity 2s ease-in-out;
         }
         .btn {
-            padding: 15px 30px;
+            padding: 10px 20px; /* Ajustado para ser menor */
             background-color: #ff3366;
             color: white;
             border: none;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1rem; /* Menor para mobile */
             border-radius: 50px;
             text-transform: uppercase;
             text-decoration: none;
-            margin-top: 20px;
+            margin-top: 10px; /* Mais espaçamento */
             display: none;
             z-index: 2;
             position: absolute;
@@ -73,12 +73,12 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px;
+            padding: 15px; /* Ajustado para mobile */
             color: white;
-            font-size: 1.2rem;
+            font-size: 1rem; /* Diminuído para mobile */
             text-align: left;
             border-radius: 10px;
-            width: 80%;
+            width: 90%; /* Ajustado para telas menores */
             line-height: 1.5;
             z-index: 1;
         }
@@ -99,20 +99,60 @@
         }
         .continue-btn {
             position: absolute;
-            bottom: 5%;
+            bottom: 10%; /* Ajustado para caber em telas menores */
             left: 50%;
             transform: translateX(-50%);
             z-index: 2;
         }
         .question-box button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1.2rem;
+            margin-top: 10px;
+            padding: 10px 15px; /* Ajustado para mobile */
+            font-size: 1rem; /* Menor para mobile */
             color: white;
             background-color: #ff3366;
             border: none;
             cursor: pointer;
             border-radius: 5px;
+        }
+
+        /* Media Queries para telas menores */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem; /* Ajusta o tamanho do título */
+            }
+
+            .btn {
+                font-size: 0.9rem; /* Botões menores */
+                padding: 8px 16px;
+            }
+
+            .rules-box, .story-text, .page3-text {
+                font-size: 0.9rem; /* Texto menor */
+                padding: 10px;
+            }
+
+            .continue-btn {
+                bottom: 5%; /* Botão mais próximo da borda inferior */
+            }
+
+            iframe {
+                height: 60vh; /* O vídeo ocupa menos altura */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem; /* Título ainda menor para telas muito pequenas */
+            }
+
+            .btn {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .rules-box, .story-text, .page3-text {
+                font-size: 0.8rem; /* Texto ainda menor */
+            }
         }
     </style>
 </head>
